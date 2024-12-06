@@ -36,6 +36,7 @@ const Login = () => {
   </div>
   {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
   <button onClick={handleLoginSubmit}> Submit </button>
+  <a href='/register'>register for a new account</a>
   </>
   )
 }
