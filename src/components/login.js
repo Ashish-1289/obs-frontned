@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import validateEmail from './utils';
+import { useDispatch, useSelector } from "react-redux";
+import { loginRequest } from '../redux/login/loginActions';
 const Login = () => {
 
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
     const [error , setError] = useState('')
-    
+    const dispatch = useDispatch();
 
     const handleLoginSubmit= ()=>{
-      setError(''); // Clear any existing errors
+      setError(''); 
       if (!validateEmail(email)) {
         setError('Please enter a valid email address.');
         return;
@@ -17,6 +19,7 @@ const Login = () => {
         setError('Password cannot be empty.');
         return;
       }
+      dispatch(loginRequest({email , password}));
         
     }
   return (
